@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <!-- <constant name="struts.i18n.reload" value="false" />
+   <constant name="struts.devMode" value="true" />
+   <constant name="struts.custom.i18n.resources" value="globalMessages" />
+
+ <package name="default" extends="struts-default,json-default" namespace="/">-->
+    <!--<action name="test" class="com.shinowit.actions.UserInfoAction" method="list">-->
+    <!--<result name="success">/list.jsp</result>-->
+    <!--</action>-->
+    <!--</package>-->
+    <!--  *hibernateLazyInitializer,.*handler,懒加载hibernate字节码增强工具返回来的值-->
+    <package name="default" extends="struts-default,json-default" namespace="/">
+        <action name="json" class="com.shinowit.actions.JsonmenuAction" method="list">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    user.*.tAuRoleInfoByRoleId.*.tAuAuthorizationsByRoleId,
+                    user.*.tBaLogInfosByOperId,
+                    user.*.tMeInStockInfosByOperId,
+                    user.*.tMeOrderInfosByOperId,
+                    user.*.tMeOutStockInfosByOperId,
+                    root.*.role,
+                    root.*.menu.*.tAuAuthorizations,
+                    root.*.menu.*.chmeinfosByMenuId.*.tAuMenuInfoByMenuId,
+                    root.*.menu.*.chmeinfosByMenuId.*.tBaLogInfosByChileId,
+                </param>
+            </result>
+        </action>
+        <action name="oss" class="com.shinowit.actions.JsonmenuAction" method="oss">
+            <result name="success">WEB-INF/oss.jsp</result>
+        </action>
+        <!-- 商品类型及字典表-->
+        <action name="merchandisec" class="com.shinowit.actions.ListAction" method="listmc">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tmclist.*.tMeMerchandiseInfosByMerchandiseCid,
+                </param>
+            </result>
+        </action>
+        <action name="merchaninsert" class="com.shinowit.actions.InseupdateAction" method="insertmc">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tmclist.*.tMeMerchandiseInfosByMerchandiseCid,
+                </param>
+            </result>
+        </action>
+        <action name="merchanupdate" class="com.shinowit.actions.InseupdateAction" method="updatemc">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tmclist.*.tMeMerchandiseInfosByMerchandiseCid,
+                </param>
+            </result>
+        </action>
+
+        <action name="merchandel" class="com.shinowit.actions.InseupdateAction" method="deletemc">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tmclist.*.tMeMerchandiseInfosByMerchandiseCid,
+                </param>
+            </result>
+        </action>
+        <!-- 字典表-->
+        <action name="prostatus" class="com.shinowit.actions.ListAction" method="listps">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tpslist.*.tMeMerchandiseInfosByProStatusId,
+                </param>
+            </result>
+        </action>
+        <action name="prostinsert" class="com.shinowit.actions.InseupdateAction" method="insertps">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tmclist.*.tMeMerchandiseInfosByMerchandiseCid,
+                </param>
+            </result>
+        </action>
+        <action name="prostupdate" class="com.shinowit.actions.InseupdateAction" method="updateps">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tmclist.*.tMeMerchandiseInfosByMerchandiseCid,
+                </param>
+            </result>
+        </action>
+
+        <action name="prostdel" class="com.shinowit.actions.InseupdateAction" method="deleteps">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tmclist.*.tMeMerchandiseInfosByMerchandiseCid,
+                </param>
+            </result>
+        </action>
+        <action name="unit" class="com.shinowit.actions.ListAction" method="listu">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tulist.*.tMeMerchandiseInfosByUnitId,
+                    tulist.*.tMeOrderDetailsInfosByUnitId,
+                </param>
+            </result>
+
+        </action>
+        <action name="unitinsert" class="com.shinowit.actions.InseupdateAction" method="inserttu">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tmclist.*.tMeMerchandiseInfosByMerchandiseCid,
+                </param>
+            </result>
+        </action>
+        <action name="unitupdate" class="com.shinowit.actions.InseupdateAction" method="updateu">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tmclist.*.tMeMerchandiseInfosByMerchandiseCid,
+                </param>
+            </result>
+        </action>
+
+        <action name="unitdel" class="com.shinowit.actions.InseupdateAction" method="deleteu">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tmclist.*.tMeMerchandiseInfosByMerchandiseCid,
+                </param>
+            </result>
+        </action>
+        <!-- 商品展示-->
+        <action name="merch" class="com.shinowit.actions.MerchAction" method="listAll">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    good_list.*.tMeInStockDetailsInfosByMerchandiseId,
+                    good_list.*.merchandisc.*.tMeMerchandiseInfosByMerchandiseCid,
+                    good_list.*.status.*.tMeMerchandiseInfosByProStatusId,
+                    <!--good_list.*.tMeMerchandiseCInfoByMerchandiseCid,-->
+                    <!--good_list.*.tMeProStatusInfoByProStatusId,-->
+                    good_list.*.unit.*.tMeMerchandiseInfosByUnitId,
+                    good_list.*.unit.*.tMeOrderDetailsInfosByUnitId,
+                    good_list.*.tMeOrderDetailsInfosByMerchandiseId,
+                    good_list.*.tMeOutStockDetailsInfosByMerchandiseId,
+                    good_list.*.chandise.*.chandise,
+                    <!--good_list.*.tMeStockInfosByMerchandiseId-->
+                </param>
+            </result>
+        </action>
+        <action name="merinsert" class="com.shinowit.actions.MerToolAction" method="insert">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="merupdate" class="com.shinowit.actions.MerToolAction" method="update">
+            <result type="json" name="success">
+            </result>
+        </action>
+
+        <action name="merdelete" class="com.shinowit.actions.MerToolAction" method="delete">
+            <result type="json" name="success">
+            </result>
+        </action>
+
+
+        <!-- 登陆-->
+        <action name="login" class="com.shinowit.actions.LoginAction" method="check">
+            <result type="json" name="success">
+                <param name="includeProperties">
+                    ishave,mag,success
+                </param>
+
+            </result>
+        </action>
+        <!-- 供应商信息-->
+        <action name="supplier" class="com.shinowit.actions.SupplierAction" method="list">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tslist.*.tMeInStockInfosBySupplierId
+                </param>
+            </result>
+        </action>
+
+
+        <action name="supinsert" class="com.shinowit.actions.SupToolAction" method="supinsert">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="supdelete" class="com.shinowit.actions.SupToolAction" method="supdelete">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="supupdate" class="com.shinowit.actions.SupToolAction" method="supupdate">
+            <result type="json" name="success">
+            </result>
+        </action>
+
+        <!-- 配送商信息-->
+
+        <action name="delivery" class="com.shinowit.actions.DeliveryAction" method="list">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tdlist.*.tMeOrderInfosByDeliveryId,
+                </param>
+            </result>
+        </action>
+        <action name="delinsert" class="com.shinowit.actions.DelToolAction" method="insert">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="deldelete" class="com.shinowit.actions.DelToolAction" method="delete">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="delupdate" class="com.shinowit.actions.DelToolAction" method="update">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="member" class="com.shinowit.actions.MemberAction" method="list">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tmlist.*.tBaMembeAddrInfosByUserName,
+                    tmlist.*.tBaSupplyRecordInfosByUserName,
+                    tmlist.*.tMeOrderInfosByUserName,
+                    tmlist.*.pwd
+                </param>
+            </result>
+        </action>
+        <!-- 入库-->
+        <action name="instock" class="com.shinowit.actions.InstockAction" method="list">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tslist.*.merchandise.*.tMeInStockDetailsInfosByMerchandiseId,
+                    tslist.*.merchandise.*.merchandisc,
+                    tslist.*.merchandise.*.stslisttatus,
+                    tslist.*.merchandise.*.unit,
+                    tslist.*.merchandise.*.tMeOrderDetailsInfosByMerchandiseId,
+                    tslist.*.merchandise.*.tMeOutStockDetailsInfosByMerchandiseId,
+                    tslist.*.merchandise.*.chandise,
+                    tslist.*.billcode.*.oper.*.tMeInStockInfosByOperId,
+                    tslist.*.billcode.*.oper.*.role,
+                    tslist.*.billcode.*.oper.*.tBaLogInfosByOperId,
+                    <!--tslist.*.billcode.*.oper.*.tMeInStockInfosByOperId,-->
+                    tslist.*.billcode.*.oper.*.tMeOrderInfosByOperId,
+                    tslist.*.billcode.*.oper.*.tMeOutStockInfosByOperId,
+                    tslist.*.billcode.*.tMeInStockDetailsInfosByBillCode,
+
+                    <!--tslist.*.tMeInStockInfoByBillCode.*.tBaSupplierInfoBySupplierId-->
+                </param>
+            </result>
+        </action>
+
+        <action name="instockdetail" class="com.shinowit.actions.InStockDetailAction" method="list">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    toslist.*.billcode.*.oper,
+                    toslist.*.billcode.*.tMeInStockDetailsInfosByBillCode,
+                    toslist.*.billcode.*.supplier,
+                    toslist.*.merchandise.*.tMeInStockDetailsInfosByMerchandiseId,
+                    toslist.*.merchandise.*.merchandisc,
+                    toslist.*.merchandise.*.unit,
+                    toslist.*.merchandise.*.status,
+                    toslist.*.merchandise.*.tMeOrderDetailsInfosByMerchandiseId,
+                    toslist.*.merchandise.*.tMeOutStockDetailsInfosByMerchandiseId,
+                    toslist.*.merchandise.*.chandise,
+                </param>
+            </result>
+        </action>
+        <action name="instockinfo" class="com.shinowit.actions.InStockDetailAction" method="total">
+            <result type="json" name="success">
+
+            </result>
+        </action>
+        <action name="instock1" class="com.shinowit.actions.InstockAction1" method="list">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tslist.*.tMeInStockDetailsInfosByBillCode,
+                    tslist.*.oper.*.role,
+                    tslist.*.oper.*.tBaLogInfosByOperId,
+                    tslist.*.oper.*.tMeInStockInfosByOperId,
+                    tslist.*.oper.*.tMeOrderInfosByOperId,
+                    tslist.*.oper.*.tMeOutStockInfosByOperId,
+                    tslist.*.supplier.*.tMeInStockInfosBySupplierId,
+                    tslist.*.billcode.*.tMeInStockDetailsInfosByBillCode,
+
+                    <!--tslist.*.tMeInStockInfoByBillCode.*.tBaSupplierInfoBySupplierId-->
+                </param>
+            </result>
+        </action>
+        <action name="instoredelete" class="com.shinowit.actions.InstoreToolAction" method="delete">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="instoreupdate" class="com.shinowit.actions.InstoreToolAction" method="update">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="insinsert" class="com.shinowit.actions.InstoreToolAction" method="insert">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <!--出库信息-->
+        <action name="outstock" class="com.shinowit.actions.OutstockAction" method="list">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    toslist.*.tMeOrderInfosByOutBillCode,
+                    <!--toslist.*.tMeOutStockDetailsInfosByOutBillCode.*.billcode,-->
+                    toslist.*.tMeOutStockDetailsInfosByOutBillCode,
+                    <!--toslist.*.tMeOutStockDetailsInfosByOutBillCode.*.chandise.*.tMeInStockDetailsInfosByMerchandiseId,-->
+                    <!--toslist.*.tMeOutStockDetailsInfosByOutBillCode.*.chandise.*.merchandisc,-->
+                    <!--toslist.*.tMeOutStockDetailsInfosByOutBillCode.*.chandise.*.status,-->
+                    <!--toslist.*.tMeOutStockDetailsInfosByOutBillCode.*.chandise.*.unit,-->
+                    <!--toslist.*.tMeOutStockDetailsInfosByOutBillCode.*.chandise.*.tMeOrderDetailsInfosByMerchandiseId,-->
+                    <!--toslist.*.tMeOutStockDetailsInfosByOutBillCode.*.chandise.*.tMeOutStockDetailsInfosByMerchandiseId,-->
+                    <!--toslist.*.tMeOutStockDetailsInfosByOutBillCode.*.chandise.*.tMeStockInfosByMerchandiseId,-->
+                    toslist.*.oper.*.role,
+                    toslist.*.oper.*.tBaLogInfosByOperId,
+                    toslist.*.oper.*.tMeInStockInfosByOperId,
+                    toslist.*.oper.*.tMeOrderInfosByOperId,
+                    toslist.*.oper.*.tMeOutStockInfosByOperId,
+                </param>
+            </result>
+        </action>
+        <action name="outstoredelete" class="com.shinowit.actions.OutstoreToolAction" method="delete">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="outstockinfo" class="com.shinowit.actions.OutStockDetailAction" method="total">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="outstockdetail" class="com.shinowit.actions.OutStockDetailAction" method="list">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    toslist.*.chandise.*.tMeInStockDetailsInfosByMerchandiseId,
+                    toslist.*.chandise.*.merchandisc,
+                    toslist.*.chandise.*.status,toslist.*.chandise.*.unit,
+                    toslist.*.chandise.*.tMeOrderDetailsInfosByMerchandiseId,
+                    toslist.*.chandise.*.tMeOutStockDetailsInfosByMerchandiseId,
+                    toslist.*.chandise.*.chandise,
+                    toslist.*.billcode.*.tMeOrderInfosByOutBillCode,
+                    toslist.*.billcode.*.tMeOutStockDetailsInfosByOutBillCode,
+                    toslist.*.billcode.*.oper,
+                </param>
+            </result>
+        </action>
+        <action name="outstoreupdate" class="com.shinowit.actions.OutstoreToolAction" method="update">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="outinsert" class="com.shinowit.actions.OutstoreToolAction" method="insert">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <!--商品库存-->
+        <action name="avgprice" class="com.shinowit.actions.StoreAction" method="list">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tslist.*.chandise.*.tMeInStockDetailsInfosByMerchandiseId,
+                    tslist.*.chandise.*.merchandisc,
+                    tslist.*.chandise.*.unit,
+                    tslist.*.chandise.*.status,
+                    tslist.*.chandise.*.tMeOrderDetailsInfosByMerchandiseId,
+                    tslist.*.chandise.*.tMeOutStockDetailsInfosByMerchandiseId,
+                    tslist.*.chandise.*.chandise,
+                </param>
+            </result>
+        </action>
+        <action name="storeinfo" class="com.shinowit.actions.StoreAction" method="listall">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tslist.*.chandise.*.tMeInStockDetailsInfosByMerchandiseId,
+                    tslist.*.chandise.*.merchandisc,
+                    tslist.*.chandise.*.unit,
+                    tslist.*.chandise.*.status,
+                    tslist.*.chandise.*.tMeOrderDetailsInfosByMerchandiseId,
+                    tslist.*.chandise.*.tMeOutStockDetailsInfosByMerchandiseId,
+                    tslist.*.chandise.*.chandise,
+                </param>
+            </result>
+        </action>
+        <!--权限管理-->
+        <action name="roleinfo" class="com.shinowit.actions.RoleAction" method="list">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    role_list.*.tAuAuthorizationsByRoleId,
+                    role_list.*.tAuOperInfosByRoleId,
+                </param>
+            </result>
+        </action>
+        <action name="roleinsert" class="com.shinowit.actions.RoleToolAction" method="insert">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="roleupdate" class="com.shinowit.actions.RoleToolAction" method="update">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="roledelete" class="com.shinowit.actions.RoleToolAction" method="delete">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="roletree" class="com.shinowit.actions.JsonmenuAction" method="jsonmenu">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="treechecked" class="com.shinowit.actions.JsonmenuAction" method="tree">
+            <result type="json" name="success">
+            </result>
+        </action>
+
+        <!--操作员信息-->
+        <action name="oper" class="com.shinowit.actions.OperAction" method="list">
+            <result type="json" name="success">
+                <param name="excludeProperties">
+                    tolist.*.role.*.tAuAuthorizationsByRoleId,
+                    <!--tolist.*.role.*.tAuAuthorizationsByRoleId.*.menu.*.tBaLogInfosByMenuId,-->
+                    <!--tolist.*.role.*.tAuAuthorizationsByRoleId.*.menu.*.tAuAuthorizationsByMenuId,-->
+                    tolist.*.role.*.tAuOperInfosByRoleId,
+                    tolist.*.tBaLogInfosByOperId,
+                    tolist.*.tMeInStockInfosByOperId,
+                    tolist.*.tMeOrderInfosByOperId,
+                    tolist.*.tMeOutStockInfosByOperId,
+                </param>
+            </result>
+        </action>
+        <action name="operinsert" class="com.shinowit.actions.OperToolAction" method="operinsert">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="operupdate" class="com.shinowit.actions.OperToolAction" method="operupdate">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="operpwd" class="com.shinowit.actions.OperToolAction" method="updatapwd">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <action name="operdelete" class="com.shinowit.actions.OperToolAction" method="operdelete">
+            <result type="json" name="success">
+            </result>
+        </action>
+        <!--切换登陆员-->
+        <action name="switch" class="com.shinowit.actions.OperAction" method="usernamelist">
+            <result type="json" name="success">
+
+                <param name="excludeProperties">
+                    tolist.*.tMeOutStockInfosByOperId,
+                    tolist.*.tMeOrderInfosByOperId,
+                    tolist.*.tMeInStockInfosByOperId,
+                    tolist.*.tBaLogInfosByOperId,
+                    tolis.*.role.*.tAuAuthorizationsByRoleId,
+                    tolis.*.role.*.tAuOperInfosByRoleId,
+                    tolist.*.pwd,
+                    tolist.*.address,
+                    tolist.*.linkTel,
+                    tolist.*.qq,
+                    tolist.*.mobile,
+                    tolist.*.email,
+                </param>
+            </result>
+        </action>
+        <!--<action name="roleinfo" class="com.shinowit.actions.OperAction" method="role">-->
+        <!--<result type="json" name="success">-->
+        <!--<param name="excludeProperties">-->
+        <!--trlist.*.tAuAuthorizationsByRoleId,-->
+        <!--trlist.*.tAuOperInfosByRoleId,-->
+        <!--</param>-->
+        <!--</result>-->
+        <!--</action>-->
+    </package>
+</struts>

@@ -1,0 +1,355 @@
+{"id": "undefined",
+    "treeNode": {
+        "childList": [
+            {
+                "childList": [
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": "js.instock",
+                            "menuId": 1,
+                            "parentid": 17,
+                            "remark": null,
+                            "src": "images\/1.jpg",
+                            "tag": "instock",
+                            "title": "采购订单"
+                        }
+                    },
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": "js.instockinsert",
+                            "menuId": 2,
+                            "parentid": 17,
+                            "remark": null,
+                            "src": "images\/1.jpg",
+                            "tag": "instockinsert",
+                            "title": "商品入库"
+                        }
+                    },
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": "js.page",
+                            "menuId": 3,
+                            "parentid": 17,
+                            "remark": null,
+                            "src": "images\/1.jpg",
+                            "tag": "page",
+                            "title": "商品展示"
+                        }
+                    }
+                ],
+                "menuinfo": {
+                    "js": null,
+                    "menuId": 17,
+                    "parentid": null,
+                    "remark": null,
+                    "src": null,
+                    "tag": null,
+                    "title": "进货管理"
+                }
+            },
+            {
+                "childList": [
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": "js.outstock",
+                            "menuId": 4,
+                            "parentid": 18,
+                            "remark": null,
+                            "src": null,
+                            "tag": "outstock",
+                            "title": "销售订单"
+                        }
+                    },
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": "js.outstockinsert",
+                            "menuId": 5,
+                            "parentid": 18,
+                            "remark": "",
+                            "src": null,
+                            "tag": "outstockinsert",
+                            "title": "商品出库"
+                        }
+                    },
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": "js.store",
+                            "menuId": 6,
+                            "parentid": 18,
+                            "remark": null,
+                            "src": null,
+                            "tag": "store",
+                            "title": "商品库存"
+                        }
+                    }
+                ],
+                "menuinfo": {
+                    "js": null,
+                    "menuId": 18,
+                    "parentid": null,
+                    "remark": null,
+                    "src": null,
+                    "tag": null,
+                    "title": "销售管理"
+                }
+            },
+            {
+                "childList": [
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": "js.merchanc",
+                            "menuId": 14,
+                            "parentid": 19,
+                            "remark": null,
+                            "src": null,
+                            "tag": "merchanc",
+                            "title": "分类信息"
+                        }
+                    },
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": "js.status",
+                            "menuId": 15,
+                            "parentid": 19,
+                            "remark": null,
+                            "src": null,
+                            "tag": "status",
+                            "title": "促销状态"
+                        }
+                    },
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": "js.unit",
+                            "menuId": 16,
+                            "parentid": 19,
+                            "remark": null,
+                            "src": null,
+                            "tag": "unit",
+                            "title": "商品单位"
+                        }
+                    }
+                ],
+                "menuinfo": {
+                    "js": null,
+                    "menuId": 19,
+                    "parentid": null,
+                    "remark": null,
+                    "src": null,
+                    "tag": null,
+                    "title": "字典表管理"
+                }
+            },
+            {
+                "childList": [
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": "js.supplier",
+                            "menuId": 7,
+                            "parentid": 20,
+                            "remark": null,
+                            "src": null,
+                            "tag": "supplier",
+                            "title": "供应商信息"
+                        }
+                    },
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": "js.delivery",
+                            "menuId": 8,
+                            "parentid": 20,
+                            "remark": null,
+                            "src": null,
+                            "tag": "delivery",
+                            "title": "配送商信息"
+                        }
+                    },
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": "js.oper",
+                            "menuId": 9,
+                            "parentid": 20,
+                            "remark": null,
+                            "src": null,
+                            "tag": "oper",
+                            "title": "操作员信息"
+                        }
+                    },
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": "js.member",
+                            "menuId": 10,
+                            "parentid": 20,
+                            "remark": null,
+                            "src": null,
+                            "tag": "member",
+                            "title": "会员信息"
+                        }
+                    }
+                ],
+                "menuinfo": {
+                    "js": null,
+                    "menuId": 20,
+                    "parentid": null,
+                    "remark": null,
+                    "src": null,
+                    "tag": null,
+                    "title": "人员管理"
+                }
+            },
+            {
+                "childList": [
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": "js.updatepwd",
+                            "menuId": 11,
+                            "parentid": 21,
+                            "remark": null,
+                            "src": "images\/2.png",
+                            "tag": "updatepwd",
+                            "title": "修改密码"
+                        }
+                    },
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": null,
+                            "menuId": 12,
+                            "parentid": 21,
+                            "remark": null,
+                            "src": "images\/3.png",
+                            "tag": null,
+                            "title": "更改皮肤"
+                        }
+                    },
+                    {
+                        "childList": [],
+                        "menuinfo": {
+                            "js": "js.userwindow",
+                            "menuId": 13,
+                            "parentid": 21,
+                            "remark": null,
+                            "src": "images\/4.png",
+                            "tag": "userwindow",
+                            "title": "更换操作员"
+                        }
+                    }
+                ],
+                "menuinfo": {
+                    "js": null,
+                    "menuId": 21,
+                    "parentid": null,
+                    "remark": null,
+                    "src": null,
+                    "tag": null,
+                    "title": "系统设置"
+                }
+            }
+        ],
+        "menuinfo": null
+    }, "user": {
+    "address": "中国",
+    "email": "20155031@qq.com",
+    "id": 1,
+    "linkTel": "2131231",
+    "mobile": "1551196xx95",
+    "operId": "001001",
+    "operName": "admin",
+    "pwd": "21232f297a57a5a743894a0e4a801fc3",
+    "qq": "20155031",
+    "role": {
+        "id": 1,
+        "roleId": "001",
+        "roleName": "超级管理员",
+        "sortId": 1,
+        "state": true,
+        "tAuAuthorizationsByRoleId": [
+            {
+                "id": 1,
+                "isEnabled": true,
+                "menu": {
+                    "js": null,
+                    "menuId": 17,
+                    "parentid": null,
+                    "remark": null,
+                    "src": null,
+                    "tag": null,
+                    "title": "进货管理"
+                },
+                "role": null
+            },
+            {
+                "id": 2,
+                "isEnabled": true,
+                "menu": {
+                    "js": null,
+                    "menuId": 18,
+                    "parentid": null,
+                    "remark": null,
+                    "src": null,
+                    "tag": null,
+                    "title": "销售管理"
+                },
+                "role": null
+            },
+            {
+                "id": 3,
+                "isEnabled": true,
+                "menu": {
+                    "js": null,
+                    "menuId": 19,
+                    "parentid": null,
+                    "remark": null,
+                    "src": null,
+                    "tag": null,
+                    "title": "字典表管理"
+                },
+                "role": null
+            },
+            {
+                "id": 4,
+                "isEnabled": true,
+                "menu": {
+                    "js": null,
+                    "menuId": 20,
+                    "parentid": null,
+                    "remark": null,
+                    "src": null,
+                    "tag": null,
+                    "title": "人员管理"
+                },
+                "role": null
+            },
+            {
+                "id": 5,
+                "isEnabled": true,
+                "menu": {
+                    "js": null,
+                    "menuId": 21,
+                    "parentid": null,
+                    "remark": null,
+                    "src": null,
+                    "tag": null,
+                    "title": "系统设置"
+                },
+                "role": null
+            }
+        ],
+        "tAuOperInfosByRoleId": [null]
+    },
+    "sortId": 1,
+    "state": true
+}}

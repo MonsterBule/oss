@@ -1,0 +1,170 @@
+{
+    "id": null,
+    "roleid": null,
+    "treeNode": {
+        "children": [
+            {
+                "children": [],
+                "leaf": true,
+                "menuinfo": {
+                    "js": null,
+                    "menuId": 17,
+                    "parentid": null,
+                    "remark": null,
+                    "src": null,
+                    "tag": null,
+                    "title": "进货管理"
+                }
+            },
+            {
+                "children": [],
+                "leaf": true,
+                "menuinfo": {
+                    "js": null,
+                    "menuId": 18,
+                    "parentid": null,
+                    "remark": null,
+                    "src": null,
+                    "tag": null,
+                    "title": "销售管理"
+                }
+            },
+            {
+                "children": [],
+                "leaf": true,
+                "menuinfo": {
+                    "js": null,
+                    "menuId": 19,
+                    "parentid": null,
+                    "remark": null,
+                    "src": null,
+                    "tag": null,
+                    "title": "字典表管理"
+                }
+            },
+            {
+                "children": [],
+                "leaf": true,
+                "menuinfo": {
+                    "js": null,
+                    "menuId": 20,
+                    "parentid": null,
+                    "remark": null,
+                    "src": null,
+                    "tag": null,
+                    "title": "人员管理"
+                }
+            },
+            {
+                "children": [],
+                "leaf": true,
+                "menuinfo": {
+                    "js": null,
+                    "menuId": 21,
+                    "parentid": null,
+                    "remark": null,
+                    "src": null,
+                    "tag": null,
+                    "title": "系统设置"
+                }
+            }
+        ],
+        "leaf": false,
+        "menuinfo": null
+    },
+    "user": {
+        "address": "中国",
+        "email": "20155031@qq.com",
+        "id": 1,
+        "linkTel": "2131231",
+        "mobile": "1551196xx95",
+        "operId": "001001",
+        "operName": "admin",
+        "pwd": "21232f297a57a5a743894a0e4a801fc3",
+        "qq": "20155031",
+        "role": {
+            "id": 1,
+            "roleId": "001",
+            "roleName": "超级管理员",
+            "sortId": 1,
+            "state": true,
+            "tAuAuthorizationsByRoleId": [
+                {
+                    "id": 1,
+                    "isEnabled": true,
+                    "menu": {
+                        "js": null,
+                        "menuId": 17,
+                        "parentid": null,
+                        "remark": null,
+                        "src": null,
+                        "tag": null,
+                        "title": "进货管理"
+                    },
+                    "role": null
+                },
+                {
+                    "id": 2,
+                    "isEnabled": true,
+                    "menu": {
+                        "js": null,
+                        "menuId": 18,
+                        "parentid": null,
+                        "remark": null,
+                        "src": null,
+                        "tag": null,
+                        "title": "销售管理"
+                    },
+                    "role": null
+                },
+                {
+                    "id": 3,
+                    "isEnabled": true,
+                    "menu": {
+                        "js": null,
+                        "menuId": 19,
+                        "parentid": null,
+                        "remark": null,
+                        "src": null,
+                        "tag": null,
+                        "title": "字典表管理"
+                    },
+                    "role": null
+                },
+                {
+                    "id": 4,
+                    "isEnabled": true,
+                    "menu": {
+                        "js": null,
+                        "menuId": 20,
+                        "parentid": null,
+                        "remark": null,
+                        "src": null,
+                        "tag": null,
+                        "title": "人员管理"
+                    },
+                    "role": null
+                },
+                {
+                    "id": 5,
+                    "isEnabled": true,
+                    "menu": {
+                        "js": null,
+                        "menuId": 21,
+                        "parentid": null,
+                        "remark": null,
+                        "src": null,
+                        "tag": null,
+                        "title": "系统设置"
+                    },
+                    "role": null
+                }
+            ],
+            "tAuOperInfosByRoleId": [
+                null
+            ]
+        },
+        "sortId": 1,
+        "state": true
+    }
+}

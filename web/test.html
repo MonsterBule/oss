@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title></title>
+<link href="extjs/resources/ext-theme-access/ext-theme-access-all-debug.css" rel="stylesheet" type="text/css"/>
+<script src="extjs/ext-all-debug.js" type="text/javascript"></script>
+<script type="text/javascript">
+Ext.onReady(function () {
+
+    Ext.QuickTips.init();  //开启表单提示
+    //login combo 设置 Start
+    var login_store = new Ext.data.Store({
+        proxy: new Ext.data.HttpProxy({url: '../servlet/Login_combo'}),
+        reader: new Ext.data.ArrayReader({}, [
+            {name: 'value'},
+            {name: 'text'}
+        ])
+    })
+    //login combo 设置  end
+    //设置 Login combo Start
+    var login_combo = new Ext.form.ComboBox({
+        store: login_store,
+        fieldLabel: '角色',
+        emptyText: '请选择',
+        mode: 'remote',
+        name: 'duty',
+        triggerAction: 'all',
+        valueField: 'value',
+        displayField: 'text',
+        width: 90,
+        readOnly: true,
+        msgTarget: 'side',
+        allowBlank: false
+    });
+    //设置 Login combo end
+
+    //加载Login_store中所有关于角色的数据
+    login_store.load();
+
+    //form设置 Start
+    var myform = new Ext.form.FormPanel({
+        defaultType: 'textfield',
+        labelAlign: 'right',
+        labelWidth: 58,
+        x: 50,
+        y: 40,
+        anchor: '85% 105%',
+        frame: true,
+        items: [
+            {
+                fieldLabel: '用户名',
+                name: 'username',
+                id: 'username',
+                xtype: 'numberfield',
+                msgTarget: 'side',
+                allowBlank: false,
+                allowNegative: false,
+                allowDecimals: false,
+                decimalPrecision: 4,
+                minValue: 0,
+                maxValue: 150,
+                listeners: {
+                    'blur': function () {
+                        showPassword()
+                    }
+                }
+            },
+            {
+                fieldLabel: '密码',
+                name: 'password',
+                msgTarget: 'side',
+                allowBlank: false,
+                vtype: 'alphanum'
+            },
+            {
+                xtype: 'panel',
+                layout: 'form',
+                labelWidth: 58,
+                items: [login_combo, {
+                    layout: 'column',
+                    items: [
+                        {
+                            columnWidth: .5,
+                            xtype: 'checkbox',
+                            name: 'remember',
+                            id: 'remember',
+                            inputValue: 'remember',//真正有用
+                            boxLabel: '记住密码'
+                        },
+                        {
+                            columnWidth: .5,
+                            xtype: 'checkbox',
+                            name: 'autoLogin',
+                            inputValue: 'autoLogin',
+                            boxLabel: '自动登录'
+                        }
+                    ]
+                }]
+            }
+        ]
+    });
+    //form设置 end
+
+    //记住密码功能 Start
+    //1.设置cookie
+    function setCookie(name, value) {
+        var date = new Date();
+        date.setTime(date.getTime() + 2 * 60 * 60);
+        window.document.cookie = name + "=" + value + ";expire=" + date.toGMTString();
+    }
+
+    //2.监听事件
+    function remember() {
+        if (myform.findByType("checkbox")[0].checked == true) {
+            Ext.Msg.alert("信息", "去记密码了");
+            setCookie(Ext.get("username").getValue(), Ext.get("password").getValue());
+        }
+
+    }
+
+    //3.得到username字符串长度  Start
+    function getCookie() {
+        var username = Ext.get("username").getValue() + "=";
+        var username_len = username.length;
+        var cookie_len = window.document.cookie.length;       //感觉 这里 只有客户端只有一个cookie是才成立？？？？？？？？？？？？？？？？？
+        var i = 0;
+        while (i < cookie_len) {
+            var j = i + username_len;
+            if (window.document.cookie.substring(i, j) == username) return getCookieValue(j);
+            i = window.document.cookie.indexOf(" ", j);
+            if (i == -1)
+                return null;
+        }
+    }
+
+    //4.读取cookie中的password对应的值
+    function getCookieValue(offset) {
+        var password_len = window.document.cookie.indexOf(";", offset);
+        if (password_len == -1)
+            password_len = window.document.cookie.length;
+        return window.document.cookie.substring(offset, password_len);
+    }
+
+    //5.将cookie中存储的password显示出来
+    function showPassword() {
+        var password = getCookie();
+        if (password != null) {
+            window.document.all.password.value = password;
+        }
+    }
+
+    //记住密码功能 end
+
+    //combox设置 Start
+    //定义combox中要显示的数据，（二维数组data）
+    var data = [
+        ['xtheme-pink.css', '粉红色'],
+        ['xtheme-gray.css', '灰色'],
+        ['', '默认']
+    ];
+    //定义处理数据的store
+    var store = new Ext.data.SimpleStore({
+        fields: ['value', 'text'],
+        data: data
+    });
+
+    var combo = new Ext.form.ComboBox({
+        fieldLabel: '皮肤',
+        store: store,
+        emptyText: '请选择您喜欢的皮肤',
+        mode: 'local',
+        triggerAction: 'all',
+        valueField: 'value',
+        displayField: 'text'
+    });
+    //combox设置 end
+
+    //comboBox 事件(换肤功能) Start
+    combo.on('select', function (comboBox) {   //执行换肤功能
+        var css_skin = comboBox.getValue();
+        var date = new Date();
+        date.setTime(date.getTime() + 30 * 24 * 60 * 60);
+        window.document.getElementsByTagName("link")[1].href = "../scripts/ext/resources/css/" + css_skin;
+        window.document.cookie = "css=" + css_skin + ";expires=" + date.toGMTString();
+    });
+    //以上换肤功能只能用于当前，关闭浏览器不会保留此皮肤。下面让他保留
+    var cookieArr = window.document.cookie.split(";");  //感觉 这里 只有客户端只有一个cookie是才成立？？？？？？？？？？？？？？？？？？
+    var css = null;
+    for (var i = 0; i < cookieArr.length; i++) {
+        var arr = cookieArr[i].split("=");
+        if (arr[0] == "css") {
+            css = arr[1];
+        }
+    }
+    ;
+    window.document.getElementsByTagName("link")[1].href = "../scripts/ext/resources/css/" + css;
+    //comboBox 事件(换肤功能) end
+
+    //存放combo的form Start
+    var combo_form = new Ext.form.FormPanel({
+        labelWidth: 90,
+        labelAlign: 'right',
+        frame: true,
+        x: 0,
+        y: 0,
+        anchor: '100% 25%',
+        items: [combo]
+    });
+    //存放combo的form end
+    var _window = new Ext.Window({
+        layout: 'absolute',
+        buttonAlign: 'center',
+        title: '登陆',
+        modal: true,
+        closable: false,
+        resizable: false,
+        plain: true,
+        width: 350,
+        height: 230,
+        items: [combo_form, myform],
+        buttons: [
+            {
+                text: '确定',
+                handler: function () {
+                    remember();    //执行记住密码        ？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+                    if (!myform.getForm().isValid()) {
+                        return;
+                    }
+
+                    myform.getForm().submit({
+                        method: 'post',
+                        waitMsg: '正在登陆，请稍等。。。。',
+                        url: '../servlet/LoginServlet',
+                        success: function (myform, action) {
+                            if (action.result.msg == '登陆成功') {
+                                Ext.Msg.alert("信息", action.result.msg);
+                                window.location.href = 'Admin_main.jsp';
+                            }
+                            else {
+                                Ext.Msg.alelt("信息", action.result.msg);
+                            }
+                        },
+                        failure: function (myform, action) {
+                            Ext.Msg.alert("信息", action.result.msg);
+                        }
+                    })
+                }
+            },
+            {
+                text: '取消',
+                handler: function () {
+                    myform.getForm().reset();
+                }
+            }
+        ]
+    })
+    _window.show();
+});
+</script>
+</head>
+<body>
+
+</body>
+</html>
